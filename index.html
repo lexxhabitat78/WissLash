@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiss Lash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f8f7f3;--ink:#111;--soft:#555}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Source Sans 3',Arial,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:'Lora',Georgia,serif;font-weight:400;margin:0}
+#intro{position:fixed;inset:0;background:var(--bg);z-index:99;display:flex;align-items:center;justify-content:center;transition:opacity 1s ease,visibility 1s}
+#intro img{width:min(80vw,520px);animation:zoom 3.5s ease forwards}
+#intro.hide{opacity:0;visibility:hidden}
+@keyframes zoom{from{opacity:0;transform:scale(.9)}30%{opacity:1}to{opacity:1;transform:scale(1)}}
+.page{max-width:760px;margin:20px auto;padding:34px 24px;border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:5px;background:var(--bg)}
+header{text-align:center}
+header img{width:min(70%,320px)}
+nav{display:flex;justify-content:center;gap:22px;margin:10px 0 30px;font-family:'Lora',serif;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
+nav a{color:var(--ink);text-decoration:none}
+h2{text-align:center;font-size:30px;letter-spacing:.04em;text-transform:uppercase;margin:46px 0 8px}
+h2::after{content:"";display:block;width:180px;height:1px;background:var(--ink);margin:12px auto 24px}
+h3{font-weight:600;font-size:18px;text-transform:uppercase;margin:24px 0 6px}
+.row{display:flex;align-items:baseline;gap:6px}
+.row i{flex:1;border-bottom:1px dotted var(--ink);transform:translateY(-4px)}
+.row b{font-weight:600}
+ul{padding-left:20px}
+.rules p{margin:4px 0 0}
+.merci{text-align:center;font-family:'Lora',serif;text-transform:uppercase;margin-top:30px;letter-spacing:.05em}
+form{display:grid;gap:14px}
+label{font-weight:600;font-size:15px}
+input,select,textarea{width:100%;padding:12px;border:1px solid var(--ink);background:#fff;font:inherit;border-radius:0}
+textarea{min-height:100px;resize:vertical}
+button{background:var(--ink);color:var(--bg);border:0;padding:15px;font-family:'Lora',serif;font-size:17px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+button:disabled{opacity:.5}
+#msg{text-align:center;font-weight:600;min-height:24px}
+.hp{position:absolute;left:-9999px}
+footer{text-align:center;color:var(--soft);font-size:14px;margin-top:40px}
+</style>
+</head>
+<body>
 
+<div id="intro"><img src="logo.jpg" alt="Wiss Lash"></div>
+
+<div class="page">
+<header><img src="logo.jpg" alt="Wiss Lash"></header>
+<nav><a href="#tarifs">Tarifs</a><a href="#regles">Règles</a><a href="#rdv">Rendez-vous</a></nav>
+
+<section id="tarifs">
+<h2>Grille tarifaire</h2>
+<h3>Extensions de cils</h3>
+<div class="row">Pose cils à cils<i></i><b>40 €</b></div>
+<div class="row">Pose mixte<i></i><b>45 €</b></div>
+<div class="row">Pose volume russe<i></i><b>50 €</b></div>
+<div class="row">Dépose cils<i></i><b>10 €</b></div>
+<div class="row">Dépose extérieure<i></i><b>15 €</b></div>
+<h3>Rehaussement de cils</h3>
+<div class="row">Rehaussement de cils coréen<i></i><b>35 €</b></div>
+<div class="row">Avec teinture<i></i><b>45 €</b></div>
+<h3>Sourcils</h3>
+<div class="row">Browlift<i></i><b>35 €</b></div>
+<div class="row">Browlift avec teinture<i></i><b>45 €</b></div>
+</section>
+
+<section id="regles" class="rules">
+<h2>Règles de la maison</h2>
+<h3>Venir seule</h3>
+<p>Merci de ne pas venir accompagnée lors de votre rendez-vous afin de garantir calme et confort au studio.</p>
+<h3>Cils propres</h3>
+<p>Venez avec les cils impeccablement nettoyés et démaquillés (vous pouvez venir en full face, mais les cils doivent être 100% clean ! 😉).</p>
+<h3>Sensibilités &amp; allergies</h3>
+<p>Merci de préciser avant la pose si vous êtes sensible ou allergique à certains produits ou colles.</p>
+<h3>Conseils pour les extensions</h3>
+<ul>
+<li>Évitez le mascara, le recourbe-cils et les produits gras avant le rendez-vous.</li>
+<li>Prévoyez 1h30 à 2h selon la pose choisie pour un travail soigné.</li>
+<li>Retirez vos lentilles de contact avant la prestation si nécessaire.</li>
+<li>Pas d'eau, de vapeur ou de sauna pendant les 24h à 48h suivant la pose.</li>
+</ul>
+<p class="merci">Merci de votre compréhension</p>
+</section>
+
+<section id="rdv">
+<h2>Prendre rendez-vous</h2>
+<form id="form">
+<input type="hidden" name="access_key" value="COLLE_TA_CLE_WEB3FORMS_ICI">
+<input type="hidden" name="subject" value="Nouvelle réservation Wiss Lash">
+<input type="hidden" name="from_name" value="Site Wiss Lash">
+<input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+<div><label for="nom">Nom</label><input id="nom" name="Nom" required></div>
+<div><label for="prenom">Prénom</label><input id="prenom" name="Prénom" required></div>
+<div><label for="tel">Numéro de téléphone</label><input id="tel" name="Téléphone" type="tel" required></div>
+<div><label for="pose">Pose demandée</label>
+<select id="pose" name="Pose demandée" required>
+<option value="">Choisir…</option>
+<optgroup label="Extensions de cils">
+<option>Pose cils à cils (40 €)</option>
+<option>Pose mixte (45 €)</option>
+<option>Pose volume russe (50 €)</option>
+<option>Dépose cils (10 €)</option>
+<option>Dépose extérieure (15 €)</option>
+</optgroup>
+<optgroup label="Rehaussement de cils">
+<option>Rehaussement de cils coréen (35 €)</option>
+<option>Rehaussement avec teinture (45 €)</option>
+</optgroup>
+<optgroup label="Sourcils">
+<option>Browlift (35 €)</option>
+<option>Browlift avec teinture (45 €)</option>
+</optgroup>
+</select></div>
+<div><label for="precisions">Précisions (facultatif)</label><textarea id="precisions" name="Précisions" placeholder="Jour / horaire souhaité, allergies, remarques…"></textarea></div>
+<button id="btn" type="submit">Envoyer ma demande</button>
+<div id="msg"></div>
+</form>
+</section>
+
+<footer>© Wiss Lash</footer>
+</div>
+
+<script>
+setTimeout(function(){document.getElementById('intro').classList.add('hide')},3500);
+
+document.getElementById('form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var btn=document.getElementById('btn'),msg=document.getElementById('msg');
+  btn.disabled=true;msg.textContent='Envoi en cours…';
+  try{
+    var r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)});
+    var d=await r.json();
+    if(d.success){msg.textContent='Merci ! Ta demande a bien été envoyée, je te recontacte très vite.';this.reset();}
+    else{msg.textContent='Une erreur est survenue, réessaie.';}
+  }catch(err){msg.textContent='Une erreur est survenue, réessaie.';}
+  btn.disabled=false;
+});
+</script>
+</body>
+</html>
