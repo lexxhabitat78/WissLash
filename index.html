@@ -1,31 +1,30 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Wiss Lash</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--gold:#d8b46a;--gold2:#f3dca0;--card:#151413;--iv:#f6f1e8}
-*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;overflow:hidden}
-body{font-family:'Poppins',Arial,sans-serif;font-weight:300;color:var(--iv);background:#0a0a0a;background-image:radial-gradient(circle at 20% 0,#2a2113 0,#0a0a0a 55%)}
-h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
-button{font-family:inherit}
-@keyframes up{to{opacity:1;transform:none}}
-#intro{position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:radial-gradient(circle at 50% 40%,#241c10,#000);display:flex;align-items:center;justify-content:center;text-align:center;animation:introOut 1s 3.5s forwards}
-#intro.skip{display:none}
-@keyframes introOut{to{opacity:0;visibility:hidden;transform:scale(1.2)}}
-#intro h1{font-size:clamp(40px,12vw,96px);font-weight:800;letter-spacing:.1em;color:var(--gold2);text-shadow:0 0 30px rgba(216,180,106,.5)}
-#intro h1 span{display:inline-block;opacity:0;transform:translateY(40px) rotate(8deg);animation:up .8s forwards}
-#intro h1 .sp{width:.35em}
-#intro p{color:var(--gold);letter-spacing:.4em;font-size:12px;text-transform:uppercase;margin-top:14px;opacity:0;animation:up 1s 1.4s forwards}
-#top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;background:rgba(10,10,10,.85);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(216,180,106,.25)}
-.brand{font:800 18px 'Playfair Display',serif;letter-spacing:.2em;color:var(--gold2);cursor:pointer}
-.view{position:fixed;top:0;left:0;right:0;bottom:0;z-index:5;padding:80px 5vw 110px;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transform:translateX(50px);transition:opacity .45s,transform .5s,visibility .45s}
-.view.on{opacity:1;visibility:visible;transform:none}
-.wrap{max-width:900px;margin:0 auto}
-#bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:30;display:flex;gap:4px;padding:6px;background:#121110;border:1px solid rgba(216,180,106,.45);border-radius:40px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
-#bar button{border:0;background:none;color:var(--iv);padding:9px 14px;border-radius:30px;font-size:12px;font-weight:500;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.7;transition:all .35s}
-#bar button b{font-size:18px;font-weight:400;transition:transform .35s}
-#bar button.on{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;opacity:1}
+    var a=Math.random()*6.28,l=30+Math.random()*40;
+    q.style.setProperty('--x',Math.cos(a)*l+'px');q.style.setProperty('--y',Math.sin(a)*l+'px');q.style.color=cols[i%3];
+    document.body.appendChild(q);setTimeout(function(){q.parentNode&&q.parentNode.removeChild(q)},850);
+  })(i)}
+});
+function confetti(){
+  var C=['#d8b46a','#f3dca0','#ffffff','#b8903f'],i;
+  for(i=0;i<60;i++){(function(i){
+    var c=document.createElement('div');c.className='cf';c.style.left=Math.random()*100+'vw';c.style.background=C[i%4];
+    c.style.setProperty('--x',(Math.random()*200-100)+'px');c.style.setProperty('--d',(2+Math.random()*2)+'s');
+    document.body.appendChild(c);setTimeout(function(){c.parentNode&&c.parentNode.removeChild(c)},4300);
+  })(i)}
+}
+$('form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var err=$('err'),btn=$('btn'),form=this;
+  if(!$('nom').value.trim()||!$('prenom').value.trim()||!$('tel').value.trim()){err.textContent='Merci de remplir nom, prénom et téléphone.';return}
+  if(!$('pose').value){err.textContent='Choisis ta pose ✦';return}
+  err.textContent='';btn.disabled=true;btn.textContent='Envoi…';
+  function fail(){err.textContent='Une erreur est survenue, réessaie.';btn.disabled=false;btn.textContent='Envoyer ma demande'}
+  fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)})
+  .then(function(r){return r.json()})
+  .then(function(d){
+    if(d.success){confetti();$('card').innerHTML='<div class="ok"><b>✨</b><h3 style="font-size:30px;margin:10px 0;color:#f3dca0">Merci !</h3><p>Ta demande a bien été envoyée.<br>Je te recontacte très vite pour confirmer ton rendez-vous.</p><button class="btn" style="margin-top:20px" onclick="location.reload()">Retour à l\u2019accueil</button></div>'}
+    else{fail()}
+  }).catch(fail);
+});
+</script>
+</body>
+</html>
